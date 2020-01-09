@@ -1,101 +1,71 @@
-[
-	{
-		"id": 1,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi1@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 2,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi2@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 3,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi3@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 4,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi4@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 5,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi5@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 6,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi6@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 7,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi7@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 8,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi8@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-	{
-		"id": 9,
-		"nombre": "Jorge",
-		"apellidos": "Montes Izazaga",
-		"cedula": "ABCD1234",
-		"ine": "ine.png",
-		"fechaNacimiento": "26-11-1997",
-		"email": "jmontesi9@outlook.com",
-		"password": "12345678",
-		"foto": "foto.png"
-	},
-]
+[{
+	"id": 1,
+	"userId": 1,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 2,
+	"userId": 2,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 3,
+	"userId": 3,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 4,
+	"userId": 4,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 5,
+	"userId": 5,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 6,
+	"userId": 6,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 7,
+	"userId": 7,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 8,
+	"userId": 8,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"id": 9,
+	"userId": 9,
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png"
+}, {
+	"nombre": "Jorge Montes Izazaga",
+	"ine": "ine.png",
+	"fechaNacimiento": "26-11-1997",
+	"foto": "foto.png",
+	"id": 10,
+	"userId": 10
+}]

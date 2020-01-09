@@ -9,7 +9,15 @@ import functions as fn
 app = Flask(__name__)
 doctors_dict = ""
 users_dict = ""
+creds_dict = ""
+fechas_dict = ""
+citas_dict = ""
 PORT = 9097
+usuarios = "usuarios.json"
+citas = "citas.json"
+doctores = "doctores.json"
+fechas = "fechas.json"
+credenciales = "credenciales.json"
 
 @app.route('/getDoctors', methods = ['GET'])
 def get_doctors():
@@ -27,30 +35,87 @@ def get_spec_doctors(id):
 
 @app.route('/login', methods = ['POST'])
 def login():
-	email = "jmontesi1@outlook.com"
-	if fn.checkLogin(user_dict, email):
-		return True
-	return False
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    x, isDoc = fn.checkLogin(creds_dict, email, password)
+    if x:
+        return jsonify({"result":"OK", "isDoctor": isDoc})
+    return jsonify({"result":"ERROR", "isDoctor": 0})
 
-@app.route('/register', methods = ['POST'])
-def registro():
-    return True
-
-# @app.route('/updateInfo', methods = ['POST'])
-# def update_info():
-#     data = request.json()
-#     data.('id')
+@app.route('/nuevaCita', methods = ['POST'])
+def crearCita():
+    data = request.get_json()
+    idFecha = data.get('idFecha')
+    idDoctor = data.get('idDoctor')
+    idUsuario = data.get('idUsuario')
     
+    fn.cambiarDisp(idFecha, idDoctor, fechas_dict)
+    
+    with open(fechas, 'r+') as f:
+        fechas_dict = json.load(f)
+        f.close()
+    
+    data.__setitem__('id', fn.getLastID(citas_dict))
+    citas_dict.append(data)
+    
+    fn.saveToFile(citas, json.dumps(citas_dict))
+    
+    return 'Cita registrada'
+
+@app.route('/getFechas/<id>', methods = ['GET'])
+def getFechas(id):
+    return fn.fechasDoctor(id, fechas_dict)
+
+@app.route('/getCitas/<id>)', methods = ['GET'])
+def getCitas(id):
+    return fn.getCitas(id, citas_dict)
+
+@app.route('/getCitasPasadas/<id>)', methods = ['GET'])
+def getCitasPasadas(id):
+    return fn.getCitasPasadas(id, citas_dict)
+
+@app.route('/registro', methods = ['POST'])
+def registro():
+    data = request.get_json()
+    
+    if not fn.checkEmail(data.get('email'), creds_dict):
+    
+        creds_aux = {'id:': fn.getLastID(creds_dict),
+                            'email': data.get('email'),
+                            'password': data.get('password'),
+                            'isDoctor': False}
+        
+        del data['email']
+        del data['password']
+        
+        data.__setitem__('id', fn.getLastID(users_dict))
+        data.__setitem__('userId', fn.getLastID(creds_dict))
+        
+        users_dict.append(data)
+        creds_dict.append(creds_aux)
+        
+        fn.saveToFile(usuarios, json.dumps(users_dict))
+        fn.saveToFile(credenciales, json.dumps(creds_dict))
+    
+        return 'Registro Correcto'
+    
+    return 'Correo ocupado'
 
 if __name__ == '__main__':
-    with open('doctores.json', 'r') as f:
+    with open(doctores, 'r+') as f:
         doctors_dict = json.load(f)
-        
-    with open('usuarios.json', 'r') as f:
+        f.close()
+    with open(usuarios, 'r+') as f:
         users_dict = json.load(f)
+        f.close()
+    with open(fechas, 'r+') as f:
+        fechas_dict = json.load(f)
+        f.close()
+    with open(citas, 'r+') as f:
+        citas_dict = json.load(f)
+        f.close()
+    with open(credenciales, 'r+') as f:
+        creds_dict = json.load(f)
+        f.close()
     app.run(host = '0.0.0.0', port = PORT, threaded = True, debug = True)
-
-
-
-
-

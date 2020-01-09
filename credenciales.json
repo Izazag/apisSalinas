@@ -1,0 +1,66 @@
+[{
+	"id": 1,
+	"email": "test1@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 2,
+	"email": "test2@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 3,
+	"email": "test3@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 4,
+	"email": "test4@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 5,
+	"email": "test5@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 6,
+	"email": "test6@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 7,
+	"email": "test7@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 8,
+	"email": "test8@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 9,
+	"email": "test9@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 10,
+	"email": "test10@outlook.com",
+	"password": "12345678",
+	"isDoctor": false
+}, {
+	"id": 11,
+	"email": "test11@outlook.com",
+	"password": "12345678",
+	"isDoctor": true
+}, {
+	"id": 12,
+	"email": "test12@outlook.com",
+	"password": "12345678",
+	"isDoctor": true
+}, {
+	"id": 13,
+	"email": "test13@outlook.com",
+	"password": "12345678",
+	"isDoctor": true
+}]
