@@ -19,6 +19,11 @@ doctores = "doctores.json"
 fechas = "fechas.json"
 credenciales = "credenciales.json"
 
+def openFile(filename, dictionary):
+    with open(filename, 'r+') as f:
+        dictionary = json.load(f)
+        f.close()
+
 @app.route('/getDoctors', methods = ['GET'])
 def get_doctors():
     data = doctors_dict
@@ -52,9 +57,7 @@ def crearCita():
     
     fn.cambiarDisp(idFecha, idDoctor, fechas_dict)
     
-    with open(fechas, 'r+') as f:
-        fechas_dict = json.load(f)
-        f.close()
+    openFile(fechas, fechas_dict)
     
     data.__setitem__('id', fn.getLastID(citas_dict))
     citas_dict.append(data)
