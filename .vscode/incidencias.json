@@ -1,0 +1,20 @@
+[
+	{
+		"categoria": "Extravío",
+		"titulo": "Extravío de jeringas",
+		"descripción": "Se llevaron tres jeringas de 5ml del consultorio.",
+		"id": 2
+	}, 
+	{
+		"categoria": "Extravío",
+		"titulo": "Extravío de jeringas",
+		"descripción": "Se llevaron tres jeringas de 5ml del consultorio.",
+		"id": 2
+	},
+	{
+		"categoria": "Extravío",
+		"titulo": "Extravío de jeringas",
+		"descripción": "Se llevaron tres jeringas de 5ml del consultorio.",
+		"id": 3
+	}
+]

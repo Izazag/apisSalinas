@@ -3,69 +3,59 @@
 	"userId": 1,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 2,
 	"userId": 2,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 3,
 	"userId": 3,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 4,
 	"userId": 4,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 5,
 	"userId": 5,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 6,
 	"userId": 6,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 7,
 	"userId": 7,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 8,
 	"userId": 8,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"id": 9,
 	"userId": 9,
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png"
+	"telefono": 5576721120
 }, {
 	"nombre": "Jorge Montes Izazaga",
 	"ine": "ine.png",
-	"fechaNacimiento": "26-11-1997",
-	"foto": "foto.png",
+	"telefono": 5576721120,
 	"id": 10,
 	"userId": 10
 }]

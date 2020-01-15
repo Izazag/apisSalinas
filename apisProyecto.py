@@ -3,8 +3,12 @@ import os
 import cv2
 import json
 from flask import Flask, jsonify, request
-from flask_restful import Resource, Api
 import functions as fn
+
+# from OpenSSL import SSL
+# context = SSL.Context(SSL.SSLv23_METHOD)
+# context.use_privatekey_file('server.key')
+# context.use_certificate_file('server.crt')
 
 app = Flask(__name__)
 doctors_dict = ""
@@ -19,13 +23,9 @@ doctores = "doctores.json"
 fechas = "fechas.json"
 credenciales = "credenciales.json"
 
-def openFile(filename, dictionary):
-    with open(filename, 'r+') as f:
-        dictionary = json.load(f)
-        f.close()
-
 @app.route('/getDoctors', methods = ['GET'])
 def get_doctors():
+    print(doctors_dict)
     data = doctors_dict
     return jsonify(data)
 
@@ -44,39 +44,41 @@ def login():
     email = data.get('email')
     password = data.get('password')
     x, isDoc = fn.checkLogin(creds_dict, email, password)
-    if x:
-        return jsonify({"result":"OK", "isDoctor": isDoc})
-    return jsonify({"result":"ERROR", "isDoctor": 0})
+    if x > 0:
+        return jsonify({"isDoctor": isDoc, "id": x})
+    return jsonify({"isDoctor": 0, "id": -1})
 
 @app.route('/nuevaCita', methods = ['POST'])
 def crearCita():
     data = request.get_json()
-    idFecha = data.get('idFecha')
+    print(data)
+    fecha = data.get('fecha')
     idDoctor = data.get('idDoctor')
     idUsuario = data.get('idUsuario')
     
-    fn.cambiarDisp(idFecha, idDoctor, fechas_dict)
-    
-    openFile(fechas, fechas_dict)
+    fechas_aux = fn.cambiarDisp(fecha, idDoctor, fechas_dict)
     
     data.__setitem__('id', fn.getLastID(citas_dict))
     citas_dict.append(data)
     
     fn.saveToFile(citas, json.dumps(citas_dict))
+    fn.saveToFile(fechas, json.dumps(fechas_aux))
     
-    return 'Cita registrada'
+    fechas_dict = fechas_aux
+    
+    return '{"respuesta" : "Cita Registrada"}'
 
 @app.route('/getFechas/<id>', methods = ['GET'])
 def getFechas(id):
-    return fn.fechasDoctor(id, fechas_dict)
+    return jsonify(fn.fechasDoctor(int(id), fechas_dict))
 
-@app.route('/getCitas/<id>)', methods = ['GET'])
+@app.route('/getCitas/<id>', methods = ['GET'])
 def getCitas(id):
-    return fn.getCitas(id, citas_dict)
+    return jsonify(fn.getCitas(int(id), citas_dict))
 
-@app.route('/getCitasPasadas/<id>)', methods = ['GET'])
+@app.route('/getCitasPasadas/<id>', methods = ['GET'])
 def getCitasPasadas(id):
-    return fn.getCitasPasadas(id, citas_dict)
+    return jsonify(fn.getCitasPasadas(int(id), citas_dict))
 
 @app.route('/registro', methods = ['POST'])
 def registro():
@@ -98,12 +100,19 @@ def registro():
         users_dict.append(data)
         creds_dict.append(creds_aux)
         
+        print(json.dumps(users_dict))
+        
         fn.saveToFile(usuarios, json.dumps(users_dict))
         fn.saveToFile(credenciales, json.dumps(creds_dict))
     
-        return 'Registro Correcto'
+        return '{"response" : "Registro correcto"}'
     
-    return 'Correo ocupado'
+    return '{"response" : "Correo Ocupado"}'
+
+def openFile(filename, dictionary):
+    with open(filename, 'r+') as f:
+        dictionary = json.load(f)
+        f.close()
 
 if __name__ == '__main__':
     with open(doctores, 'r+') as f:
@@ -122,3 +131,4 @@ if __name__ == '__main__':
         creds_dict = json.load(f)
         f.close()
     app.run(host = '0.0.0.0', port = PORT, threaded = True, debug = True)
+            # ssl_context=('cert.pem', 'key.pem'))

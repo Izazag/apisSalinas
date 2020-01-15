@@ -1,12 +1,12 @@
 from datetime import *
+import json
 
 def checkLogin(jsonData, email, password):
-	for user in jsonData:
-		if email == user.get('email'):
-			if checkPass(user.get('password'), password):
-				print("SUCCESS")
-				return 1, user.get(type)
-	return 'ERROR'
+    for user in jsonData:
+        if email == user.get('email'):
+            if checkPass(user.get('password'), password):
+                return user.get('id'), user.get('isDoctor')
+    return -1, False
 
 def checkEmail(email, emailsList):
     for emails in emailsList:
@@ -23,27 +23,26 @@ def checkPass(passSaved, passIn):
 def cambiarDisp(idFecha, idDoctor, fechas_dict):
     fechas_aux = list()
     for fecha in fechas_dict:
-        if idFecha == fecha['id'] and idDoctor == fecha['idDoctor']:
+        if idFecha == fecha['fecha'] and idDoctor == fecha['idDoctor']:
             fecha['disponible'] = False
             fechas_aux.append(fecha)
+            print(fecha)
         else:
             fechas_aux.append(fecha)
-    
-    saveToFile('fechas.json', fechas_aux)
-    print("Actualizacon correcta")
+            print(fecha)
+    return fechas_aux
 
 def fechasDoctor(id, fechas_dict):
     fechas_aux = list()
     for fecha in fechas_dict:
-        if fecha['disponible'] == False:
-            break
-        if fecha['id'] == id and compareDates(fecha['fecha']):
+        if fecha['idDoctor'] == id and compareDates(fecha['fecha']):
             fechas_aux.append(fecha)
+        if fecha['disponible'] == False:
+            continue
     return fechas_aux
             
 def compareDates(fecha):
     date_time_obj = datetime.strptime(fecha, '%Y-%m-%d %H:%M')
-    print(datetime.today(), date_time_obj)
     if datetime.today() < date_time_obj:
         return True
     return False
