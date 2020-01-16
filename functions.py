@@ -40,6 +40,17 @@ def fechasDoctor(id, fechas_dict):
         if fecha['disponible'] == False:
             continue
     return fechas_aux
+
+def changeScore(idDoctor, score, doctores_dict):
+    doctores_aux = list()
+    for doctor in doctores_dict:
+        if doctor['id'] == idDoctor:
+            doctor['calificacion'] = doctor['calificacion'] + score
+            doctor['calificacion'] += 1
+            doctores_aux.append(doctor)
+        else:
+            doctores_aux.append(doctor)
+    return doctores_aux
             
 def compareDates(fecha):
     date_time_obj = datetime.strptime(fecha, '%Y-%m-%d %H:%M')
@@ -51,15 +62,26 @@ def getCitas(idUsuario, citas_dict):
     citas_aux = list()
     for cita in citas_dict:
         if idUsuario == cita['idUsuario'] and compareDates(cita['fecha']):
+            print(cita)
             citas_aux.append(cita)
     return citas_aux
 
 def getCitasPasadas(idUsuario, citas_dict):
     citas_aux = list()
     for cita in citas_dict:
+        print(cita)
         if idUsuario == cita['idUsuario'] and not compareDates(cita['fecha']):
+            print(cita)
             citas_aux.append(cita)
     return citas_aux
+
+def getIncidencias(idDoctor, incidencias_dict):
+    incidencias_aux = list()
+    for incidencia in incidencias_dict:
+        if idDoctor == incidencia['idDoctor']:
+            incidencias_aux.append(incidencia)
+    return incidencias_aux
+
 
 def getLastID(dict_list):
     x = 0

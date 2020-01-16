@@ -6,11 +6,11 @@
 		"apellidos": "Montes Izazaga",
 		"cedula": "ABCD1234",
 		"experiencia": "5",
-		"calificacion": "94",
+		"calificacion": 94,
 		"clinica": "CHOPO",
 		"foto": "123.png",
 		"especialidad": "Neurocirujano",
-		"totalVotos": "20"
+		"totalVotos": 20
 	},
 	{
 		"id": 2,
@@ -19,11 +19,11 @@
 		"apellidos": "Montes Izazaga",
 		"cedula": "ABCD1234",
 		"experiencia": "5",
-		"calificacion": "94",
+		"calificacion": 94,
 		"clinica": "CHOPO",
 		"foto": "123.png",
 		"especialidad": "Neurocirujano",
-		"totalVotos": "20"
+		"totalVotos": 20
 	},
 	{
 		"id": 3,
@@ -32,10 +32,10 @@
 		"apellidos": "Montes Izazaga",
 		"cedula": "ABCD1234",
 		"experiencia": "5",
-		"calificacion": "94",
+		"calificacion": 94,
 		"clinica": "CHOPO",
 		"foto": "123.png",
 		"especialidad": "Neurocirujano",
-		"totalVotos": "20"
+		"totalVotos": 20
 	}
 ]
