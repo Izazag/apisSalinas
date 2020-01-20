@@ -82,6 +82,24 @@ def getIncidencias(idDoctor, incidencias_dict):
             incidencias_aux.append(incidencia)
     return incidencias_aux
 
+def getAsistencia(idDoctor, asistencia_dict):
+    asistencia_aux = list()
+    for asistencia in asistencia_dict:
+        if idDoctor == asistencia['idDoctor']:
+            asistencia_aux.append(asistencia)
+    return asistencia_aux
+
+def cambiarEstatus(idIncidencia, estatus, incidencias_dict):
+    incidencias_aux = list()
+    for incidencia in incidencias_dict:
+        if idIncidencia == incidencia['id']:
+            incidencia['estatus'] = estatus
+            incidencias_aux.append(incidencia)
+        else:
+            incidencias_aux.append(incidencia)
+    return incidencias_aux
+    
+
 
 def getLastID(dict_list):
     x = 0

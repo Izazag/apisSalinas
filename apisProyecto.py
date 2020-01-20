@@ -16,6 +16,8 @@ users_dict = ""
 creds_dict = ""
 fechas_dict = ""
 citas_dict = ""
+avisos_dict = ""
+asistencia_dict = ""
 incidencias_dict = ""
 PORT = 9097
 usuarios = "usuarios.json"
@@ -24,6 +26,8 @@ doctores = "doctores.json"
 fechas = "fechas.json"
 credenciales = "credenciales.json"
 incidencias = "incidencias.json"
+avisos = "avisos.json"
+asistencia = "asistencia.json"
 
 
 #PACIENTES
@@ -37,7 +41,7 @@ def get_doctors():
         for index, doctors in enumerate(info):
             if index == id - 1:
                 return doctors
-    
+            
     else:
         print(doctors_dict)
         data = doctors_dict
@@ -113,6 +117,49 @@ def crearIncidencia():
     
     return '{"respuesta" : "Incidencia Registrada"}'
 
+@app.route('/getAvisos', methods = ['GET'])
+def getAvisos():
+    return jsonify(avisos_dict)
+
+@app.route('/nuevoAviso', methods = ['POST'])
+def crearAviso():
+    data = request.get_json()
+    print(data)
+    
+    data.__setitem__('id', fn.getLastID(avisos_dict))
+    avisos_dict.append(data)
+    
+    fn.saveToFile(avisos, json.dumps(avisos_dict))
+    
+    return '{"respuesta" : "Aviso Registrado"}'
+
+@app.route('/getAsistencias', methods = ['POST'])
+def getAsistencias():
+    data = request.get_json()
+    id = data.get('id')
+    return jsonify(fn.getAsistencia(int(id), asistencia_dict))
+
+@app.route('/nuevaAsistencia', methods = ['POST'])
+def crearAsistencia():
+    data = request.get_json()
+    print(data)
+    
+    data.__setitem__('id', fn.getLastID(asistencia_dict))
+    avisos_dict.append(data)
+    
+    fn.saveToFile(asistencia, json.dumps(asistencia_dict))
+    
+    return '{"respuesta" : "Asistencia Registrada"}'
+
+@app.route('/cambiarEstatus', methods = ['POST'])
+def cambiarEstatus():
+    data = request.request.get_json()
+    id = data.get('id')
+    estatus = data.get('estatus')
+    
+    fn.saveToFile(incidencias, json.dumps(fn.cambiarEstatus(id, estatus, incidencias_dict)))
+    
+    return '{"respueta": "Estatus cambiado"}'
 
 #SHARED APIs
 
@@ -178,6 +225,12 @@ if __name__ == '__main__':
         f.close()
     with open(incidencias, 'r+') as f:
         incidencias_dict = json.load(f)
+        f.close()
+    with open(avisos, 'r+') as f:
+        avisos_dict = json.load(f)
+        f.close()
+    with open(asistencia, 'r+') as f:
+        asistencia_dict = json.load(f)
         f.close()
     app.run(host = '0.0.0.0', port = PORT, threaded = True, debug = True)
             # ssl_context=('cert.pem', 'key.pem'))
