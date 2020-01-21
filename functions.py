@@ -45,8 +45,9 @@ def changeScore(idDoctor, score, doctores_dict):
     doctores_aux = list()
     for doctor in doctores_dict:
         if doctor['id'] == idDoctor:
-            doctor['calificacion'] = doctor['calificacion'] + score
-            doctor['calificacion'] += 1
+            doctor['score'] = doctor['score'] + score
+            doctor['score'] += 1
+            doctor['calificacion'] = doctor['score']/doctor['totalVotos']
             doctores_aux.append(doctor)
         else:
             doctores_aux.append(doctor)
@@ -98,7 +99,12 @@ def cambiarEstatus(idIncidencia, estatus, incidencias_dict):
         else:
             incidencias_aux.append(incidencia)
     return incidencias_aux
-    
+
+def getInfoDoctor(idDoctor, doctores_dict):
+    for doctores in doctores_dict:
+        if idDoctor == doctores['id']:
+            return doctores['clinica'], doctores['nombre'], doctores['calificacion']/doctores['totalVotos']
+    return "NON", "NON", 0.0
 
 
 def getLastID(dict_list):

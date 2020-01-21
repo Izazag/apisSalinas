@@ -41,7 +41,6 @@ def get_doctors():
         for index, doctors in enumerate(info):
             if index == id - 1:
                 return doctors
-            
     else:
         print(doctors_dict)
         data = doctors_dict
@@ -53,11 +52,16 @@ def crearCita():
     print(data)
     fecha = data.get('fecha')
     idDoctor = data.get('idDoctor')
-    # idUsuario = data.get('idUsuario')
     
     fechas_aux = fn.cambiarDisp(fecha, idDoctor, fechas_dict)
     
     data.__setitem__('id', fn.getLastID(citas_dict))
+    
+    clinica, nombre, calificacion = fn.getInfoDoctor(idDoctor, doctors_dict)
+    data.__setitem__('clinica', clinica)
+    data.__setitem__('nombre', nombre)
+    data.__setitem__('calificacion', calificacion)
+    
     citas_dict.append(data)
     
     fn.saveToFile(citas, json.dumps(citas_dict))
@@ -89,13 +93,13 @@ def getCitasPasadas():
 def sendScore():
     data = request.get_json()
     idDoctor = data.get('idDoctor')
-    score = data.get('score')
+    score = data.get('calificacion')
     
-    fn.changeScore(idDoctor, score, doctors_dict)
+    doctores_aux = fn.changeScore(idDoctor, score, doctors_dict)
     
-    fn.saveToFile(doctores, json.dumps(doctors_dict))
+    fn.saveToFile(doctores, json.dumps(doctores_aux))
     
-    return '{"respuesta" : "Calificacion cambiada"}'
+    return '{"respuesta" : "Calificacion actualizada"}'
 
 #PARTE MEDICA
 
