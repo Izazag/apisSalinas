@@ -157,7 +157,7 @@ def crearAsistencia():
 
 @app.route('/cambiarEstatus', methods = ['POST'])
 def cambiarEstatus():
-    data = request.request.get_json()
+    data = request.get_json()
     id = data.get('id')
     estatus = data.get('estatus')
     
@@ -205,6 +205,33 @@ def registro():
         return '{"response" : "Registro correcto"}'
     
     return '{"response" : "Correo Ocupado"}'
+
+@app.route('/registroDoctor', methods = ['POST'])
+def registroDoctor():
+    
+    data = request.get_json()
+    print(data)
+    
+    if not fn.checkEmail(data.get('email'), creds_dict):
+        creds_aux = {'id:': fn.getLastID(creds_dict),
+                                'email': data.get('email'),
+                                'password': data.get('password'),
+                                'isDoctor': True}
+            
+        del data['email']
+        del data['password']
+            
+        data.__setitem__('id', fn.getLastID(doctors_dict))
+        data.__setitem__('userId', fn.getLastID(creds_dict))
+            
+        doctors_dict.append(data)
+        creds_dict.append(creds_aux)
+            
+        fn.saveToFile(doctores, json.dumps(doctors_dict))
+        fn.saveToFile(credenciales, json.dumps(creds_dict))
+        return '{"response" : "Registro correcto"}'
+    return '{"response" : "Correo Ocupado"}'
+    
 
 def openFile(filename, dictionary):
     with open(filename, 'r+') as f:
