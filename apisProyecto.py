@@ -67,8 +67,6 @@ def crearCita():
     fn.saveToFile(citas, json.dumps(citas_dict))
     fn.saveToFile(fechas, json.dumps(fechas_aux))
     
-    # fechas_dict = fechas_aux
-    
     return '{"respuesta" : "Cita Registrada"}'
 
 @app.route('/getFechas', methods = ['POST'])
